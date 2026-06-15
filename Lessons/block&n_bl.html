@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>blocking and non blocking programs</title>
+</head>
+
+<body>
+    <h1>non blocking </h1>
+    <script>
+
+        // blocking or synchoronous programing 
+        function fetchUserDataSynch(){
+            alert("fetching user data")
+            return {user: 1, name: "Olyan"}
+        }
+        console.log("start fetching user data ");
+        const user = fetchUserDataSynch();
+        console.log("start data ", user);
+        console.log("this message is blocked until user click OK Button " );
+
+
+        // non-blocking or Asynchoronous programing 
+        function getUserData(callback) {
+            setTimeout(() => {
+                const user = { user: 1, name: "Olyan" }
+                callback(user);
+            }, 3000);
+
+        }
+
+        console.log("start to fetch user data ");
+        getUserData(function(user){
+            console.log(user)
+        })
+        console.log("this message shows up immediately! ");
+
+    </script>
+</body>
+
+</html>
