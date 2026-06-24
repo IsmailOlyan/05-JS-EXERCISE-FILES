@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom manipulate</title>
+</head>
+
+<body>
+
+
+    <h1 id="header"> Hellow World</h1>
+
+    <p class="text">this is a paragraph </p>
+    <!-- <p class="text">this is another paragraph</p> -->
+
+    <button onclick="changeContent()">change content</button>
+    <button onclick="changeData()">change Content Data</button>
+
+
+    <script>
+        let header = document.querySelector("#header")
+        console.log(header);
+
+        function changeContent() {
+            header.textContent = "i love you"
+        }
+
+        const paragraph = document.querySelector(".text")
+        console.log(paragraph);
+
+        function changeData() {
+            paragraph.innerHTML = `kaas siib, kanna saar <strong> oo arag isbadalka </strong>`
+        }
+        // changeData()
+    </script>
+</body>
+
+</html>
