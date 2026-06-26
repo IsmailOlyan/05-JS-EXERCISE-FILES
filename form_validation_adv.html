@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation Advanced</title>
+    <link rel="stylesheet" href="form_validation_adv.css">
+
+    <style>
+        .invalid {
+            border: 2px solid red;
+        }
+
+        .valid {
+            border: 2px solid green;
+        }
+
+        #error {
+            color: red;
+        }
+
+        #success {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form-container">
+        <h2>Form Validation</h2>
+
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" placeholder="Enter username">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="example@email.com">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="At least 5 characters">
+            </div>
+
+            <div class="form-group">
+                <label for="comfirmPassword">Confirm Password</label>
+                <input type="password" id="comfirmPassword" placeholder="Repeat password">
+            </div>
+
+            <p id="error"></p>
+            <p id="success"></p>
+            <button type="submit">Register</button>
+        </form>
+
+    </div>
+
+    <script>
+        let form = document.querySelector('#registrationForm');
+
+        let username = document.querySelector('#username');
+        let email = document.querySelector('#email');
+        let password = document.querySelector('#password');
+        let confirmPassword = document.querySelector('#comfirmPassword');
+
+        let error = document.querySelector('#error');
+        let success = document.querySelector('#success');
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            error.textContent = "";
+            success.textContent = "";
+
+
+            let isUsernameValid = validatedUsername();
+            let isEmailValid = validateEmail()
+            let isPasswordValid = validatePassword()
+            let isComfirmPasswordValid = validComfirmPassword()
+
+            if (!isUsernameValid) {
+                username.focus()
+                return
+            }else if(!isEmailValid){
+                email.focus()
+                return
+            } else if(!isPasswordValid){
+                password.focus()
+                return
+            } else if (!isComfirmPasswordValid){
+                confirmPassword.focus()
+                return
+            }
+
+            success.textContent = "Regestraion successfull!"
+        });
+
+        function validatedUsername() {
+            if (username.value === '') {
+                setError(username, "Username is required");
+                return false;
+            } else {
+                setSuccess(username);
+                return true;
+            }
+        }
+
+        function validateEmail() {
+            let reg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if(!email.value.match(reg)){
+               setError(email, 'Please enter a valid email')
+               return false
+            }else{
+                setSuccess(email)
+                return true
+                
+            }
+        }
+
+        function validatePassword(){
+            if(password.value.length < 5){
+                setError(password, "Password must be not less than 5 ")
+                return false
+            } else{
+                setSuccess(password)
+                return true
+            }
+        }
+
+        function validComfirmPassword(){
+            if(password.value !== confirmPassword.value){
+                setError(confirmPassword, "password does not match")
+                return false
+            } else{
+                setSuccess(confirmPassword)
+                return true
+            }
+        }
+
+        function setError(element, message) {
+            element.classList.add('invalid');
+            element.classList.remove('valid');
+            error.textContent = message;
+
+        }
+
+        function setSuccess(element) {
+            element.classList.add('valid');
+            element.classList.remove('invalid');
+        }
+    </script>
+</body>
+
+</html>

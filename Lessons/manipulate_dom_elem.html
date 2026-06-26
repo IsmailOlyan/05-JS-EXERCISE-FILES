@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Manipulating DOM </title>
+</head>
+
+<body>
+    <h1 id="header">Hello world</h1>
+    <p class="text">this is paragraph one</p>
+    <p class="text">this is paragraph two</p>
+    <button onclick="changeContent()">ChangeContent</button>
+    <button onclick="removeContent()">cancel</button>
+
+    <!--Add and Remove element from Js  -->
+
+    <ul class="list">
+        <li>List 1</li>
+        <li>List 2</li>
+        <li>List 3</li>
+</ul>       
+
+    <button onclick="addItem()">Add</button>
+    <button onclick="removeItem()">Remove</button>
+    <script>
+
+        let list = document.querySelector('.list')
+        console.log(list)
+
+            function addItem(){
+                let newList = document.createElement('li')
+                newList.textContent = "list 3"
+                list.appendChild(newList)
+            }   
+            
+            function removeItem(){
+               if(list.lastChild){
+                list.removeChild(list.lastChild)
+               } else{
+                alert("eber waye")
+               }
+            }
+
+
+        let x = document.querySelector('#header')
+        console.log(x);
+
+        function changeContent() {
+            x.textContent = "Kaas kan ku badal";
+        }
+
+        let y = document.querySelector('.text')
+        console.log(y)
+
+        function removeContent() {
+            y.innerHTML = ` waxan badalay <strong> Xogtii hore</strong>`
+        }
+
+    </script>
+</body>
+
+</html>

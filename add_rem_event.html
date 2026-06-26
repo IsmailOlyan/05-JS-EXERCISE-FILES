@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event listener</title>
+</head>
+<body>
+    <h1>Welcome to DOM Events</h1>
+
+
+    <button type="submit" id="myButton">Click me</button>
+    <button type="submit" id="removeButton">remove</button>
+
+    <script>
+        let button = document.querySelector('#myButton')
+        let removeButton = document.querySelector('#removeButton')
+
+        function handle(){
+            console.log("click submition succeeded")
+        }
+
+        button.addEventListener('click', handle)
+
+        removeButton.addEventListener('click', function(){
+            button.removeEventListener('click', handle)
+            console.log('click event removed')
+        })
+    </script>
+</body>
+</html>

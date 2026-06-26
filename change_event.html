@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>change event</title>
+</head>
+<body>
+    <label for="color">choose</label>
+    <select name="color" id="color">
+        <option value="red">Red</option>
+        <option value="green">Green</option>
+        <option value="blue">Blue</option>
+    </select>
+
+    <p id="selectedColor">selected color :None </p>
+
+    <script>
+        let colorSelect = document.querySelector('#color')
+        let selectedColor = document.querySelector('#selectedColor')
+        
+        colorSelect.addEventListener('change', function(){
+            console.log('changed to', colorSelect.value);
+            selectedColor.textContent = (`Selected color : ${colorSelect.value}`)
+            
+        })
+    </script>
+</body>
+</html>
