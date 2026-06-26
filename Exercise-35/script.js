@@ -1,19 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-    <img src="form 4.jpeg" alt="" width="500" height="400" class="img">
-
-    <button onclick="changeImage()">change</button>
-
-    <script>
-        function changeImage() {
+    function changeImage() {
             const image = document.querySelector('.img')
 
             const url = prompt('Enter your image URL here:')
@@ -35,7 +20,3 @@
             image.style.borderRadius = borderRadius
 
         }
-    </script>
-</body>
-
-</html>
